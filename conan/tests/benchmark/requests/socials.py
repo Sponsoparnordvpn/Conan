@@ -76,12 +76,47 @@ def bx():
             print("[✓] X")
     except Exception as e:
         print(f"[X] X: {e}")
+        
+def byoutube():
+    global _SUCCESS, _TOTAL_TIME
+    try:
+        start_time = time.time()
+        c = youtube("nintendo", True)
+        end_time = time.time()
 
+        elapsed_time = end_time - start_time
+
+        if c:
+            _SUCCESS += 1
+            _TOTAL_TIME += elapsed_time
+            print("[✓] Youtube")
+    except Exception as e:
+        print(f"[X] Youtube: {e}")
+
+def breddit():
+    global _SUCCESS, _TOTAL_TIME
+    try:
+        start_time = time.time()
+        c = reddit("nintendo", True)
+        end_time = time.time()
+
+        elapsed_time = end_time - start_time
+
+        if c:
+            _SUCCESS += 1
+            _TOTAL_TIME += elapsed_time
+            print("[✓] Reddit")
+    except Exception as e:
+        print(f"[X] Reddit: {e}")
+        
 def benchmark():
     bsnapchat()
     btiktok()
+    byoutube()
+    breddit
     binstagram()
     bx()
+    
     print(f"Success count: {_SUCCESS}/{COUNT}")
     print(f"Total elapsed time: {_TOTAL_TIME:.6f} seconds")
     _TIME = f"{_TOTAL_TIME:.6f}"

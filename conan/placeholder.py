@@ -1,26 +1,23 @@
-# I didn’t want to scrape using a headless browser; however, I couldn’t find a solution to bypass the cookie acceptance dialog.
-# so yeah gotta use selenium for that 1
-from parsel import Selector
+import json
 import requests
+from parsel import Selector
 from utils.config import *
 from utils.requests import getsession
 
 
-def youtube(usr):
-    _URL = "https://youtube.com/@" + usr
-    _session = getsession()
-    _session.cookies.set("CONSENT", "YES+cb", domain=".youtube.com")
-    response = _session.get("https://www.youtube.com/@LinusTechTips/videos?view=0&flow=grid", params={"ucbcb": 1})
-   
-    _r = _session.get(_URL)
-    
-    if _r.status_code == 200:
-        _s = Selector(response.text)
-        _mt = _s.xpath('//meta[@property="og:title"]/@content').get()
-        print(_mt)
-        title = _s.xpath('//title/text()').get() 
-        print(f"Page Title: {title}")
-    else:
-        print(f"Failed to fetch page. Status code: {_r.status_code}")
+def reddit(usr, debug):
 
-youtube("ezkopzioezo")
+    _URL = f"https://gateway.reddit.com/desktopapi/v1/user/{usr}/posts?rtj=only&allow_over18=1&include=identity&after=0&dist=25&sort=new&t=all" # posts
+    # https://gateway.reddit.com/desktopapi/v1/user/{username}/conversations?rtj=only&allow_over18=1&include=identity&after={lastcommentID}&dist=25&sort=new&t=all for comments
+    _session = getsession()
+    _r = _session.get(_URL)
+
+    _data = _r.json()
+    if _data.get("authorFlair") != None:
+        dprint("[✓] https://www.reddit.com/user/" + usr, debug)
+        return True
+    else:
+        dprint("[X] https://www.reddit.com/user/" + usr, debug)
+        return False
+
+print(reddit("nintendo", False))

@@ -1,5 +1,5 @@
-from socials.instagram import instagram
-
+from modules.usernames.socials import COUNT
+from modules.usernames.socials import *
 _CNT = 180
 _WM = r"""
  _____                          
@@ -23,5 +23,7 @@ _OPT = int(input("Select an option: "))
 
 if _OPT == 1:
     _USER = str(input("Enter an username: "))
-    print("Searching on "+str(_CNT)+" websites for the username: "+_USER)
+    print("Searching on "+str(COUNT)+" websites for the username: "+_USER)
     instagram(_USER)
+    tiktok(_USER)
+    snapchat(_USER)

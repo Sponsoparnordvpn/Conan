@@ -5,7 +5,7 @@ Your favorite OSINT tool for investigation and research
 
 ## 🚨 Warning  
 **⚠️ This tool is in its early build and might not work as expected. Use it at your own risk.**  
-Expect bugs, glitches, and incomplete features as we actively develop Conan into a robust OSINT solution.  
+Expect bugs, glitches, and incomplete features as I actively develop Conan into a robust OSINT solution.  
 
 ---
 
@@ -22,10 +22,9 @@ This tool is intended for educational and ethical purposes only. Misuse of Conan
 ---
 
 ## 🚀 Roadmap  
-- **Improved Username Detection**: Expand support for more platforms.  
-- **Enhanced Crawler**: Add smarter crawling features for deeper insights.  
-- **User Interface**: Develop an intuitive web interface for easy access.  
-
+- **Enhanced the organization of the folders**
+- **Optimized requests for less rate limiting**
+- **Added new socials to search**
 ---
 
 ## 🤝 Contribute  

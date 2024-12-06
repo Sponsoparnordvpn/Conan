@@ -1,9 +1,10 @@
 import json
 import requests
 from parsel import Selector
+from utils.config import *
 from utils.requests import getsession
 
-def tiktok(usr):
+def tiktok(usr, debug):
     _URL = "https://tiktok.com/@" + usr
     _session = getsession()
     _r = _session.get(_URL)
@@ -13,12 +14,13 @@ def tiktok(usr):
 
     try:
         profile_data = json.loads(data)["__DEFAULT_SCOPE__"]["webapp.user-detail"]
+        #print(profile_data)
         if not profile_data.get("userInfo"):
-            print("[X] https://tiktok.com/@" + usr)
+            dprint("[X] https://tiktok.com/@" + usr, debug)
         else:
-            print("[✓] https://tiktok.com/@" + usr)
+            dprint("[✓] https://tiktok.com/@" + usr, debug)
     except (KeyError, TypeError, json.JSONDecodeError) as e:
-        print("[?] https://tiktok.com/@" + usr)
+        dprint("[?] https://tiktok.com/@" + usr, debug)
     
     return "unknown"
 

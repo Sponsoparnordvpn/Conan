@@ -9,11 +9,8 @@ def generate():
     ]
 
     accept_languages = [
-        "en-US,en;q=0.9",
-        "fr-FR,fr;q=0.8,en-US;q=0.5,en;q=0.3",
-        "es-ES,es;q=0.9,en;q=0.7",
-        "de-DE,de;q=0.9,en;q=0.8",
-        "ja-JP,ja;q=0.9,en-US;q=0.6",
+        "en-US,en;q=0.9"
+        # atleast understable..
     ]
 
     headers = {

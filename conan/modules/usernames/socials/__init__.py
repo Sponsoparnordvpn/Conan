@@ -6,4 +6,6 @@ from .instagram import instagram
 from .tiktok import tiktok
 from .snapchat import snapchat
 from .reddit import reddit
-COUNT = 5
+from .x import twitter
+from .youtube import youtube
+COUNT = 6

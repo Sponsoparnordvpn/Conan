@@ -1,22 +1,20 @@
-# I didn’t want to scrape using a headless browser; however, I couldn’t find a solution to bypass the cookie acceptance dialog.
-# so yeah gotta use selenium for that 1
+# I should honestly thank Scrapetube for the cookie acceptance, I was lost :sob:
 from parsel import Selector
 import requests
+from utils.config import *
+from utils.requests import getsession
 
 
-
-def youtube(usr):
-    _URL = "https://youtube.com/@" + usr
-    
-    _r = requests.get(_URL, generator())
-    
-    if _r.status_code == 200:
-        _s = Selector(_r.text)
-        _mt = _s.xpath('//meta[@property="og:title"]/@content').get()
-        print(_mt)
-        title = _s.xpath('//title/text()').get() 
-        print(f"Page Title: {title}")
+def youtube(usr, debug):
+    _URL = f"https://www.youtube.com/@{usr}/videos?view=0&flow=grid"
+    _session = getsession()
+    _session.cookies.set("CONSENT", "YES+cb", domain=".youtube.com")
+    _r = _session.get(_URL, params={"ucbcb": 1})
+    _s = Selector(_r.text)
+    _mt = _s.xpath('//meta[@property="og:title"]/@content').get()
+    if _mt:
+        dprint("[✓] https://www.youtube.com/@"+usr, debug)
+        return True
     else:
-        print(f"Failed to fetch page. Status code: {_r.status_code}")
+        dprint("[X] https://www.youtube.com/@"+usr, debug)
 
-youtube("ezkopzioezo")

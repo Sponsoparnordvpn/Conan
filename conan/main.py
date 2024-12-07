@@ -1,8 +1,9 @@
 import json
+import pyperclip
 from utils.config.parser import parseconfig
 from tests.benchmark.requests.socials import *
 from modules.usernames import *
-from modules.reports import ggen, igen, sgen, tgen
+from modules.reports import ggen, igen, sgen, tgen, rgen
 
 _CNT = 180
 _WM = r"""
@@ -32,7 +33,7 @@ if _OPT == 1:
     _tC = tiktok(_USER, False)
     _sC = snapchat(_USER, False)
     twitter(_USER, False)
-    reddit(_USER, False)
+    _rC = reddit(_USER, False)
     youtube(_USER, False)
     vimeo(_USER, False)
     detail = (
@@ -45,13 +46,14 @@ if _OPT == 1:
         _igR = igen(_igC)
         _sC = sgen(_sC)
         _tC = tgen(_tC)
+        _rC = rgen(_rC)
         r = (
             input("Report succesfully generated, would you like to save it? (yes/no): ")
             .strip()
             .lower()
         )
         if "y" in r:
-            content = ggen(_igR, _sC, _tC)
+            content = ggen(_igR, _sC, _tC, _rC)
             print("Succesfully saved the report.")
             ar = (
                 input(
@@ -61,8 +63,8 @@ if _OPT == 1:
                 .lower()
             )
             if "y" in ar:
-                print(f"Hello, from this data, could you please make a resume about that person under .md format. Make sure to include some guesses such as person's age by description, images, pfps, bitmojis.. and make sure to mark the potential informations(guesses):\n{content}")
-
+                pyperclip.copy(f"Hello, could you please create a resume in .md format based on the following data? Please include some educated guesses, such as the person's age based on descriptions, images, profile pictures (pfps), bitmojis, etc. Make sure to clearly mark the information that is guessed. If you think some information may not be related to the user (for example, if someone else is using the same username), please mention it:\n{content}")
+                print("Prompt succesfully set to the clipboard")
 elif _OPT == 5:
     print("Conan 1.0.0 Benchmark tool is a tool to check for any potential errors.")
     print("Starting the benchmark...")

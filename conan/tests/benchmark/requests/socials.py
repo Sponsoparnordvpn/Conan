@@ -50,7 +50,6 @@ def bsnapchat():
     try:
         start_time = time.time()
         c = snapchat("nintendo", True)
-        print(c)
         end_time = time.time()
 
         elapsed_time = end_time - start_time

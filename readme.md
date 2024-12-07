@@ -36,8 +36,7 @@ We welcome contributions from the community! Here's how you can help:
 
 ## 📧 Contact  
 Have questions or need help? Reach out via:  
-- Email: `your.email@example.com`  
-- Twitter: [@yourhandle](https://twitter.com/yourhandle)  
+- Discord: @spxnso
 
 ---
 

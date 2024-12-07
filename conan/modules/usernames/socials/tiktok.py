@@ -14,13 +14,12 @@ def tiktok(usr, debug):
 
     try:
         profile_data = json.loads(data)["__DEFAULT_SCOPE__"]["webapp.user-detail"]
-        #print(profile_data)
         if not profile_data.get("userInfo"):
             dprint("[X] https://tiktok.com/@" + usr, debug)
         else:
             dprint("[✓] https://tiktok.com/@" + usr, debug)
+            return profile_data
     except (KeyError, TypeError, json.JSONDecodeError) as e:
         dprint("[?] https://tiktok.com/@" + usr, debug)
     
-    return "unknown"
 

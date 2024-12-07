@@ -50,6 +50,7 @@ def bsnapchat():
     try:
         start_time = time.time()
         c = snapchat("nintendo", True)
+        print(c)
         end_time = time.time()
 
         elapsed_time = end_time - start_time
@@ -107,14 +108,29 @@ def breddit():
             print("[✓] Reddit")
     except Exception as e:
         print(f"[X] Reddit: {e}")
+def bvimeo():
+    global _SUCCESS, _TOTAL_TIME
+    try:
+        start_time = time.time()
+        c = reddit("nintendo", True)
+        end_time = time.time()
+
+        elapsed_time = end_time - start_time
+        if c:
+            _SUCCESS += 1
+            _TOTAL_TIME += elapsed_time
+            print("[✓] Vimeo")
+    except Exception as e:
+        print(f"[X] Vimeo: {e}")
         
 def benchmark():
     bsnapchat()
     btiktok()
-    byoutube()
     breddit()
     binstagram()
     bx()
+    byoutube()
+    bvimeo()
     
     print(f"Success count: {_SUCCESS}/{FC}")
     print(f"Total elapsed time: {_TOTAL_TIME:.6f} seconds")

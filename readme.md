@@ -11,7 +11,7 @@ Expect bugs, glitches, and incomplete features as I actively develop Conan into 
 
 ## 🌟 Features  
 - 🔍 **Username Searching**: Check for the existence of usernames across multiple platforms.  
-- 🌐 **Website Crawler**: Investigate web profiles with advanced crawling techniques.  
+- 🌐 **AI OSINT**: Generate a complete profile of the person based on his interests, photos.
 - 🛠️ **Customizable**: Extendable to fit your specific investigative needs.  
 
 ---

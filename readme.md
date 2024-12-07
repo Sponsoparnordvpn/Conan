@@ -22,9 +22,8 @@ This tool is intended for educational and ethical purposes only. Misuse of Conan
 ---
 
 ## 🚀 Roadmap  
-- **Enhanced the organization of the folders**
-- **Optimized requests for less rate limiting**
-- **Added new socials to search**
+- **Added detailled report about user**
+- **Added AI prompt generator**
 ---
 
 ## 🤝 Contribute  

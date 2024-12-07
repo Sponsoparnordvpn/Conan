@@ -5,7 +5,8 @@ Your favorite OSINT tool for investigation and research
 
 ## 🚨 Warning  
 **⚠️ This tool is in its early build and might not work as expected. Use it at your own risk.**  
-Expect bugs, glitches, and incomplete features as I actively develop Conan into a robust OSINT solution.  
+Expect bugs, glitches, and incomplete features as I actively develop Conan into a robust OSINT solution. 
+This repository contains Conan's source code. Installation might be challenging, and I'm currently developing a CLI version.
 
 ---
 

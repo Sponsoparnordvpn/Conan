@@ -13,9 +13,10 @@ def reddit(usr, debug):
     _r = _session.get(_URL)
 
     _data = _r.json()
-    if _data.get("authorFlair"):
+    if _data.get("authorFlair") != None:
         dprint("[✓] https://www.reddit.com/user/" + usr, debug)
         return True
     else:
         dprint("[X] https://www.reddit.com/user/" + usr, debug)
-        return False
+
+    

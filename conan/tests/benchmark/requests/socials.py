@@ -5,7 +5,7 @@ import time
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")))
 
-from modules.usernames.socials import *
+from modules.usernames import *
 
 _SUCCESS = 0
 _TOTAL_TIME = 0.0
@@ -101,7 +101,6 @@ def breddit():
         end_time = time.time()
 
         elapsed_time = end_time - start_time
-
         if c:
             _SUCCESS += 1
             _TOTAL_TIME += elapsed_time
@@ -113,11 +112,11 @@ def benchmark():
     bsnapchat()
     btiktok()
     byoutube()
-    breddit
+    breddit()
     binstagram()
     bx()
     
-    print(f"Success count: {_SUCCESS}/{COUNT}")
+    print(f"Success count: {_SUCCESS}/{FC}")
     print(f"Total elapsed time: {_TOTAL_TIME:.6f} seconds")
     _TIME = f"{_TOTAL_TIME:.6f}"
     return _SUCCESS, _TIME

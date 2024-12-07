@@ -1,8 +1,7 @@
-from modules.usernames.socials import COUNT
-from modules.usernames.socials import *
 import json
 from utils.config.parser import parseconfig
 from tests.benchmark.requests.socials import *
+from modules.usernames import *
 _CNT = 180
 _WM = r"""
  _____                          
@@ -26,13 +25,23 @@ _OPT = int(input("Select an option: "))
 
 if _OPT == 1:
     _USER = str(input("Enter an username: "))
-    print("Searching on " + str(COUNT) + " websites for the username: " + _USER)
+    print("Searching on " + str(FC) + " websites for the username: " + _USER)
     instagram(_USER, False)
     tiktok(_USER, False)
     snapchat(_USER, False)
     twitter(_USER, False)
     reddit(_USER, False)
     youtube(_USER, False)
+    vimeo(_USER, False)
+    detail = (
+        input(
+            "Would you like to get a detailled report about that user? (yes/no): "
+        )
+        .strip()
+        .lower()
+    )
+    if "y" in detail:
+        print("Generating the report...")
 elif _OPT == 5:
     print("Conan 1.0.0 Benchmark tool is a tool to check for any potential errors.")
     print("Starting the benchmark...")

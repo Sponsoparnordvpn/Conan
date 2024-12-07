@@ -14,11 +14,19 @@ def generate():
     ]
 
     headers = {
-        "User-Agent": random.choice(user_agents),
-        "Accept-Language": random.choice(accept_languages),
-        "Referer": "https://www.google.com/",
-        "Accept-Encoding": "gzip, deflate, br",
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
-        "Connection": "keep-alive",
+        "User-Agent": random.choice(user_agents),  # Random User-Agent
+        "Accept-Language": random.choice(accept_languages),  # Language preferences
+        "Referer": "https://www.google.com/",  # Referrer for added legitimacy
+        "Accept-Encoding": "gzip, deflate, br",  # Compression support
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",  # MIME types
+        "Connection": "keep-alive",  # Persistent connections
+        "Upgrade-Insecure-Requests": "1",  # Indicates HTTPS preference
+        "Sec-Fetch-Site": "same-origin",  # Origin of the request
+        "Sec-Fetch-Mode": "navigate",  # Request mode
+        "Sec-Fetch-User": "?1",  # User navigation intent
+        "Sec-Fetch-Dest": "document",  # Request destination
+        "Cache-Control": "no-cache",  # Cache behavior
+        "Pragma": "no-cache",  # HTTP/1.0 cache control
     }
+
     return headers

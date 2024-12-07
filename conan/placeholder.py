@@ -1,23 +1,30 @@
 import json
-import requests
 from parsel import Selector
-from utils.config import *
 from utils.requests import getsession
-
-
-def reddit(usr, debug):
-
-    _URL = f"https://gateway.reddit.com/desktopapi/v1/user/{usr}/posts?rtj=only&allow_over18=1&include=identity&after=0&dist=25&sort=new&t=all" # posts
-    # https://gateway.reddit.com/desktopapi/v1/user/{username}/conversations?rtj=only&allow_over18=1&include=identity&after={lastcommentID}&dist=25&sort=new&t=all for comments
+from utils.config import *
+from html import unescape
+import re
+def instagram(usr, debug):
     _session = getsession()
+    _URL = f"https://imginn.com/{usr}"
     _r = _session.get(_URL)
-
-    _data = _r.json()
-    if _data.get("authorFlair") != None:
-        dprint("[✓] https://www.reddit.com/user/" + usr, debug)
-        return True
+    _s = Selector(_r.text)
+    
+    _json = _s.xpath('//script[@type="application/ld+json"]/text()').get()
+    if _json:
+        try:
+            cleaned_json = unescape(_json)
+            cleaned_json = re.sub(r"[\n\r]", " ", cleaned_json)
+            parsed_data = json.loads(cleaned_json)
+            print("Parsed Data:", json.dumps(parsed_data, indent=2))
+        except json.JSONDecodeError as e:
+            dprint(f"[!] JSON parsing error: {e}", debug)
+            dprint(f"Original JSON: {_json}", debug)
+            return "json_parse_error"
     else:
-        dprint("[X] https://www.reddit.com/user/" + usr, debug)
-        return False
+        dprint(f"[!] No JSON data found on {_URL}", debug)
+        return "no_json"
 
-print(reddit("nintendo", False))
+    return "success"
+
+instagram("maxence_xoxo", False)
